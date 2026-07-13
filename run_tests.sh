@@ -8,18 +8,13 @@
 # Так видно разницу: сломалась СБОРКА или не прошёл NWI.
 # ВНИМАНИЕ: make nwi через clang-format -i переформатирует src/*.c на месте.
 
-# declare -A SRC=(
-#   [task1]=maxmin  [task2]=squaring   [task3]=stat        [task4]=search
-#   [task5]=sort    [task6]=key9part1  [task7]=cycle_shift  [task8]=key9part2
-# )
-#  prog=${SRC[$task]}
-
 cd "$(dirname "$0")" || exit 1
 
-for dir in tests/*/; do
-  [ -d "$dir" ] || continue
-  task=$(basename "$dir")
-  [ -f "src/$prog.c" ] || continue
+for cfile in src/*.c; do
+  [ -f "$cfile" ] || continue
+  prog=$(basename "$cfile" .c)          
+  dir="tests/$prog/"                    
+  [ -d "$dir" ] || continue             
 
   # 1) Сборка тестового бинарника (под ASan). Не собралось -> это проблема сборки.
   if make -s -C src TARGET="$prog" i="$prog.c" out "$prog" 2>/dev/null; then
@@ -42,7 +37,7 @@ for dir in tests/*/; do
   done
   make -s -C src clean TARGET="$prog" >/dev/null 2>&1
 
-  # 3) Качество: make nwi (valgrind кормим валидным входом test1).
+  # 3) Качество: make nwi (valgrind кормим ОБЯЗАТЕЛЬНО валидным входным тестом).
   if make -s -C src out nwi i="$prog.c" <"${dir}test1.txt" >/dev/null 2>&1; then
     echo "$task->nwi->Успех"
   else
