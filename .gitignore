@@ -1,9 +1,13 @@
 #  добавленные файлы
+docs/*
+tests_description/
+src/.clang-format
 src/tests
 tests
 run_tests.sh
 Makefile
 src/Makefile
+app
 
 # Prerequisites
 *.d
