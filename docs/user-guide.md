@@ -44,7 +44,7 @@ git checkout D07T04
 
 5) Скопируйте файлы .gitignore, run_tests.sh и папку tests/ в корень проекта выбранного дня
 ```bash
-cp  -r {.gitignore,run_tests.sh,tests} ./../D07T04 
+cp  -r {./gitignore/.gitignore,run_tests.sh,tests} ./../D07T04 
 ```
 6) Скопируйте Makefile в папку src проекта выбранного дня
 ```bash
