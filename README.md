@@ -4,3 +4,6 @@
 3) make start 
 4) make test
 
+
+### Информация о тестах
+- tests/README.md
