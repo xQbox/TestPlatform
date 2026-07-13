@@ -1,1 +1,1 @@
-1. [Написать TG](@Rodinkov_Aleksei)
+1. [Написать TG](https://t.me@Rodinkov_Aleksei)
