@@ -36,8 +36,9 @@ $(OUT)/%.o: $(SRC)/%.c
 nwi: form ft check valgrind 
 
 start: 
-	git checkout -b develop
-	cp ./../materials/linters/.clang-format .
+	set -e
+	git checkout -b develop 
+	cp ./../materials/linters/.clang-format . ||
 	git add ../.gitignore
 	git commit -m "develop: .gitignore added"
 	
@@ -49,7 +50,7 @@ form:
 	@clang-format -n $(SRC)/*.c
 
 valgrind: ASAN :=
-valgrind: $(TARGET)
+valgrind: out $(TARGET)
 	@valgrind --tool=memcheck --leak-check=yes ./$(TARGET) $(a) $(b)
 
 # four_two
