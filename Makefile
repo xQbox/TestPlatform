@@ -6,7 +6,7 @@ b 		?= ""
 MAXFUNCSIZE = 42
 
 
-CC		=gcc
+CC		= gcc
 ASAN	= -fsanitize=address -g
 FLAGS	= -Wall -Werror -Wextra -std=c11 -I $(INC)/ $(ASAN)
 LDLIBS 	= -lm -lncursesw
@@ -36,10 +36,9 @@ $(OUT)/%.o: $(SRC)/%.c
 nwi: form ft check valgrind 
 
 start: 
-	set -e
-	git checkout -b develop 
-	cp ./../materials/linters/.clang-format . ||
-	git add ../.gitignore
+	git checkout -b develop  || continue
+	cp ./../materials/linters/.clang-format . || continue
+	git add ../.gitignore || continue
 	git commit -m "develop: .gitignore added"
 	
 check:
