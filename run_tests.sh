@@ -13,7 +13,7 @@ cd "$(dirname "$0")" || exit 1
 for cfile in src/*.c; do
   [ -f "$cfile" ] || continue
   prog=$(basename "$cfile" .c)
-  current_branch=$(git branch --show-current)          
+  current_branch=$(git branch --show-current | cut -d'_' -f1)         
   dir="tests/$current_branch/$prog/"                    
   [ -d "$dir" ] || continue             
 
