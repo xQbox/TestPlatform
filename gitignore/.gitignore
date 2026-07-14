@@ -7,7 +7,7 @@ run_tests.sh
 Makefile
 src/Makefile
 app
-
+.vscode
 # Prerequisites
 *.d
  
