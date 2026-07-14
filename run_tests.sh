@@ -12,8 +12,9 @@ cd "$(dirname "$0")" || exit 1
 
 for cfile in src/*.c; do
   [ -f "$cfile" ] || continue
-  prog=$(basename "$cfile" .c)          
-  dir="tests/$prog/"                    
+  prog=$(basename "$cfile" .c)
+  current_branch=$(git branch --show-current)          
+  dir="tests/$current_branch/$prog/"                    
   [ -d "$dir" ] || continue             
 
   # 1) Сборка тестового бинарника (под ASan). Не собралось -> это проблема сборки.
