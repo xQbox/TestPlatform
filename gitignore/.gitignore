@@ -4,7 +4,6 @@ src/.clang-format
 src/tests
 tests
 run_tests.sh
-Makefile
 src/Makefile
 app
 out
