@@ -8,6 +8,8 @@ Makefile
 src/Makefile
 app
 out
+src/src
+Quest_*
 # Prerequisites
 *.d
  
