@@ -47,7 +47,7 @@ $(OUT_LIB)/%.o: $(SRC_LIB)/%.c
 .PHONY: clean form check valgrind nwi info start ft test
 
 # new_week_individual
-nwi: form ft check valgrind test
+nwi: form ft check valgrind test clean
 
 start: 
 	git checkout -b develop  || continue
@@ -96,4 +96,4 @@ test:
 	@./../run_tests.sh
 	
 clean:
-	rm -rf $(OUT) $(TARGET)
+	rm -rf $(OUT) $(TARGET) $(OUT_LIB)  src
