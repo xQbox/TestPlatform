@@ -16,9 +16,9 @@ for libs in src/*; do
     current_branch=$(echo "${PWD##*/}" | cut -d'_' -f1)       
     dir="tests/$current_branch/$prog/"                    
     [ -d "$dir" ] || continue             
-
+    lib=$(echo "$libs" | cut -d'/' -f2)
     # 1) Сборка тестового бинарника (под ASan). Не собралось -> это проблема сборки.
-    if make -s -C src TARGET="$prog" i="$prog.c" out "$prog" 2>/dev/null; then
+    if make -s -C src TARGET="$prog" i="*.c" d="$lib" out "$prog" 2>/dev/null; then
       echo "$cfile->сборка->Успех"
     else
       echo "$cfile->сборка->Ошибка"
